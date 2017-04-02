@@ -104,7 +104,7 @@ if btcdonationlen == 16 :
 	btcdonation = btcdonationleft + "." + btcdonationright
 		
 if btcdonation != "0.00000000" :
-        txt1 = "#bitcoin #donation @ProTipHQ " + btcdonation + " BTC #thankyou #bitcoinlove"
+        txt1 = "#bitcoin #donation @ProTipHQ " + btcdonation + " BTC #thankyou #bitcoinlove #Protip"
         s = twitter.update_status(status=txt1)
         print (s)
 os.system('python /home/pi/wikileaksdonation.py')
