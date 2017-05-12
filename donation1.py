@@ -13,7 +13,6 @@ app_key =  ''
 app_secret = ''
 oauth_token = ''
 oauth_token_secret = ''
-
 #Prepare your twitter, you will need it for everything
 twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 #The above should just be a single line, without the break
@@ -32,6 +31,7 @@ print ("Searching for a Donation to " + protip)
 ## Now we can search the block ...
 vtx = block_info.vtx
 tx_count = len(block_info.vtx)
+str(tx_count)
 if tx_count >= 2 : # then we have more than just a coinbase transaction in the current block
         for x in range (0, len(vtx)) :  #loop the transactions
                 thetx = vtx[x] #grab the CTransaction object
@@ -105,6 +105,8 @@ if btcdonationlen == 16 :
 		
 if btcdonation != "0.00000000" :
         txt1 = "#bitcoin #donation @ProTipHQ " + btcdonation + " BTC #thankyou #bitcoinlove"
-        s = twitter.update_status(status=txt1)
+	photo = open('/home/pi/protip.jpg', 'rb')
+	response = twitter.upload_media(media=photo)
+        s = twitter.update_status(status=txt1, media_ids=[response['media_id']])
         print (s)
 os.system('python /home/pi/wikileaksdonation.py')

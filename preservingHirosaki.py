@@ -1,8 +1,5 @@
 ## Create a proxy object and connect to the bitcoin.rpc
 import bitcoin.rpc
-myproxy = bitcoin.rpc.Proxy()
-## Create a proxy object and connect to the bitcoin.rpc
-import bitcoin.rpc
 import os
 from twython import Twython
 
@@ -23,14 +20,14 @@ twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 
 ## Declare some variables used by our search
 isdonation = 0
-gpg = "1M3GipkG2YyHPDMPewqTpup83jitXvBg9N"
-gpgkey = "dbd0788d294dd15704d232053790c555d1cb3378" 
+hirosaki = "1HMyNgDXM9QF2zgMbJTW5dZTo1px3DnBRk"
+hirosakiKey = "b37963e3b48ee4b315cea3c5c1844d70e8c05813" 
 btcdonation = ""
 btcdonationleft= ""
 btcdonationright = ""
 
 ## Display what we are doing
-print ("Searching for a Donation to " + gpg)
+print ("Searching for a Donation to " + hirosaki)
 
 ## Now we can search the block ...
 vtx = block_info.vtx
@@ -49,11 +46,10 @@ if tx_count >= 2 : # then we have more than just a coinbase transaction in the c
 						zlen = len(z)		
 						zlen = zlen-4
 						z = z[:zlen]
-						if z == gpgkey:
+						if z == hirosakiKey:
 							#print z
 							donation = vo.nValue
-							#print(donation)
-                                       
+							#print(donation)                                        	
 							isdonation = isdonation+donation
 
 btcdonation = str(isdonation)
@@ -108,9 +104,6 @@ if btcdonationlen == 16 :
 	btcdonation = btcdonationleft + "." + btcdonationright
 		
 if btcdonation != "0.00000000" :
-        txt1 = "#bitcoin #donation @gpg4win " + btcdonation + " BTC #thankyou #gpg"
+        txt1 = "#bitcoin #donation Hirosaki's cherry blossoms @coincheckjp " + btcdonation + " BTC #thankyou"
         s = twitter.update_status(status=txt1)
         print (s)
-os.system('python /home/pi/ubuntumatedonation.py')
-
-

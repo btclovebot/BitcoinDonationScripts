@@ -35,6 +35,7 @@ print ("Searching for a Donation to " + MadBitcoins)
 ## Now we can search the block ...
 vtx = block_info.vtx
 tx_count = len(block_info.vtx)
+
 if tx_count >= 2 : # then we have more than just a coinbase transaction in the current block
         for x in range (0, len(vtx)) :  #loop the transactions
                 thetx = vtx[x] #grab the CTransaction object

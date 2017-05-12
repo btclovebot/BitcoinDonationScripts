@@ -107,4 +107,4 @@ if btcdonation != "0.00000000" :
         txt1 = "#bitcoin #donation @bitcoinlady " + btcdonation + " BTC #thankyou #bitcoinlove #satoshicentre"
         s = twitter.update_status(status=txt1)
         print (s)
-os.system('python /home/pi/andreadonation.py')
+os.system('python /home/pi/andreasdonation.py')

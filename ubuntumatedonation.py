@@ -1,8 +1,5 @@
 ## Create a proxy object and connect to the bitcoin.rpc
 import bitcoin.rpc
-myproxy = bitcoin.rpc.Proxy()
-## Create a proxy object and connect to the bitcoin.rpc
-import bitcoin.rpc
 import os
 from twython import Twython
 
@@ -23,18 +20,19 @@ twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 
 ## Declare some variables used by our search
 isdonation = 0
-gpg = "1M3GipkG2YyHPDMPewqTpup83jitXvBg9N"
-gpgkey = "dbd0788d294dd15704d232053790c555d1cb3378" 
+ubuntumate = "1Mpan6eExzNKdS8JnFAod5Pwt49aR6JsDB"
+ubuntumatekey = "e462430f1f06837b4bb9a7c3e5d489b5fa4c9c31" 
 btcdonation = ""
 btcdonationleft= ""
 btcdonationright = ""
 
 ## Display what we are doing
-print ("Searching for a Donation to " + gpg)
+print ("Searching for a Donation to " + ubuntumate)
 
 ## Now we can search the block ...
 vtx = block_info.vtx
 tx_count = len(block_info.vtx)
+str(tx_count)
 if tx_count >= 2 : # then we have more than just a coinbase transaction in the current block
         for x in range (0, len(vtx)) :  #loop the transactions
                 thetx = vtx[x] #grab the CTransaction object
@@ -49,11 +47,10 @@ if tx_count >= 2 : # then we have more than just a coinbase transaction in the c
 						zlen = len(z)		
 						zlen = zlen-4
 						z = z[:zlen]
-						if z == gpgkey:
+						if z == ubuntumatekey:
 							#print z
 							donation = vo.nValue
-							#print(donation)
-                                       
+							#print(donation)                                        	
 							isdonation = isdonation+donation
 
 btcdonation = str(isdonation)
@@ -108,9 +105,7 @@ if btcdonationlen == 16 :
 	btcdonation = btcdonationleft + "." + btcdonationright
 		
 if btcdonation != "0.00000000" :
-        txt1 = "#bitcoin #donation @gpg4win " + btcdonation + " BTC #thankyou #gpg"
+        txt1 = "#bitcoin #donation @ubuntu_mate " + btcdonation + " BTC #thankyou #bitcoinlove"
         s = twitter.update_status(status=txt1)
-        print (s)
-os.system('python /home/pi/ubuntumatedonation.py')
-
-
+        print (s) 
+os.system('python /home/pi/couragefoundationdonation.py')
