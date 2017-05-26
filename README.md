@@ -25,20 +25,7 @@ pip install twython
 
 ### sudo chmod +x ./yourfile.py
 
-### Before running donation1.py you will need to go into donation1.py, and change the following code
-
-```
-os.system('python /home/pi/Music/yourfile.py')
-```
-
-### And the same for the rest apart from gpgdonation.py
-
-### As you will see in each script apart forom gpgdonation.py there is.
-```
-os.system('etc')
-```
-
-### /home/pi/Music/first1.py is an example path, you will need to put in YOUR path location of your own file 
+### Before running BTCLOVEBOT.py you will need to go into BTCLOVEBOT.py, and change the following code
 
 ## command to put in bitcoin.conf
 ### blocknotify='location of your file' %s
